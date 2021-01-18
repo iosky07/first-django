@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'postgresql_try.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': 'simple_web',
         'USER': 'postgres',
         'PASSWORD': 'yoskiapik07',
         'HOST': 'localhost',
