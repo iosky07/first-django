@@ -1,13 +1,26 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from .models import *
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    blogs = Blog.objects.all()
+    return render(request, 'home.html', {'blogsie' : blogs})
 
 def blogs(request):
-    return render(request, 'blogs.html')
+    blogs = Blog.objects.all()
+    return render(request, 'pages/blogs/blogs.html', {'blogs' : blogs})
+
+def createBlog(request):
+    return render(request, 'pages/blogs/create.html')
 
 def tags(request):
-    return HttpResponse("This is TagPage")
+    tags = Tag.objects.all()
+    return render(request, 'pages/tags/tags.html', {'tags' : tags})
+
+def createTag(request):
+    return render(request, 'pages/tags/create.html')
+
+def comments(request):
+    comments = Comment.objects.all()
+    return render(request, 'pages/comments/comments.html', {'comments' : comments})
 
