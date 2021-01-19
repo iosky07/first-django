@@ -9,15 +9,16 @@
             <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="{% url 'create-blog' %}" class="-ml- btn btn-primary shadow-none">Tambah Data Baru</a>
+                        <a href="{% url 'form' %}" class="-ml- btn btn-primary shadow-none">Tambah Data Baru</a>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
-                            <table class="table table-striped table-md">
+                            <table class="table table-striped table-hover table-bordered">
                                 <tr>
                                     <th>Judul</th>
                                     <th>Author</th>
                                     <th>Konten</th>
+                                    <th>Thumbnail</th>
                                     <th>Tanggal</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -26,13 +27,11 @@
                                         <td>{{ blog.title }}</td>
                                         <td>{{ blog.author }}</td>
                                         <td>{{ blog.content }}</td>
+                                        <td><img src="/media/{{ blog.thumbnail }}" style="width: 150px; height: 100px" alt="..."></td>
                                         <td>{{ blog.created_at }}</td>
                                         <td>
-                                            <form action="#" method="POST" style="display: inline">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button class="btn btn-danger"><i class="fa fa-16px fa-trash"></i> Hapus
-                                                </button>
-                                            </form>
+                                            <a href="{% url 'update-blog' blog.id %}" class="btn btn-warning text-light"><i class="fa fa-16px fa-pencil-alt"></i> Update</a>
+                                            <a class="btn btn-danger text-light"><i class="fa fa-16px fa-trash"></i> Hapus</a>
                                         </td>
                                     </tr>
                                 {% endfor %}
